@@ -1,0 +1,8 @@
+class myPacket -> fading gain, nakagami_m
+self.freq = random.choice([860000000, 864000000, 868000000]) why?
+airtime
+simulation_time = 1008000 why?
+path loss component gamma
+sensi -->reciever sf allocate how?
+max_readings
+timingandpowercheck why is it set if sf is same dofferent threshold
