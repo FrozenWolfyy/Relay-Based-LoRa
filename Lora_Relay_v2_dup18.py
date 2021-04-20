@@ -876,10 +876,10 @@ print(totsoftots,powerConsumed/10)
 
 power_consumed=open("powerConsumedRelayDistanceLessSimsWithoutGPSWithoutRelayCircleDup18.txt","a")
 power_consumed.write(str(powerConsumed/10))
-power_consumed.write('\n')
+power_consumed.write(',')
 power_consumed.close()
 
 fdrConsumed=open("fdrRateRelayDistanceLessSimsWithoutGPSWithoutRelayCircleDup18.txt","a")
-fdrConsumed.write(str(powerConsumed/10))
-fdrConsumed.write('\n')
+fdrConsumed.write(str(totsoftots))
+fdrConsumed.write(',')
 fdrConsumed.close()
