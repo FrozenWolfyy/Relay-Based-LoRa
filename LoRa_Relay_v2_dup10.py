@@ -19,7 +19,7 @@ relayCircleGlobs = 0
 
 
 
-for simulation_number in range(10):
+for simulation_number in range(1):
     # turn on/off graphics
     graphics = 0
 
@@ -435,7 +435,7 @@ for simulation_number in range(10):
 
 
     # if (node.packet[rcvr_id].dist < bs[rcvr_id].dist):
-
+    #packet reception at relays
             for rcvr_id in range(numGateways, nrBS):
                 # set rx_flag to 1 if the incoming frame fits within the relay's receive window
                 x = (env.now - (rcvr_id - numGateways) * t_t) % (t_r + t_t + t_s)
@@ -461,8 +461,16 @@ for simulation_number in range(10):
                         # print("DC")
                     else:
                         node.packet[rcvr_id].collided = 0
+                        # print(powerConsumed)
+                        # print(payload_size)
+                        # print(random.randrange(min_payload_bytes, max_payload_bytes + 1))
+                        # print(node.packet[rcvr_id].pl)
+                        # print(airtime(bs[rcvr_id].sf,node.packet[rcvr_id].cr,node.packet[rcvr_id].pl,node.packet[rcvr_id].bw))
                         # print(pow(2, bs[rcvr_id].sf))
-                        powerConsumed += pow(2,bs[rcvr_id].sf)
+                        powerConsumed+=(airtime(bs[rcvr_id].sf,node.packet[rcvr_id].cr,node.packet[rcvr_id].pl,node.packet[rcvr_id].bw))
+
+
+
 
                     packetsAtBS[rcvr_id].append(node)
                     node.packet[rcvr_id].addTime = env.now
@@ -781,7 +789,7 @@ for simulation_number in range(10):
     #print("Distance: ", nodes[1].dist, "SF: ", nodes[1].sf, "Nodes: ", nrNodes, "FDR (node 0): ", rx_rate_1_relay)
 
     # print(fdr/nrNodes)
-    print(sensorPowerConsumed)
+    # print(sensorPowerConsumed)
     totsoftots+=((fdr/nrNodes))
     fdr=0
 
@@ -865,6 +873,3 @@ print(totsoftots,powerConsumed/10)
 # n0_dist_text.write(str(avg_fdr_rate))
 # n0_dist_text.write('\n')
 # n0_dist_text.close()
-
-
-

@@ -8,7 +8,7 @@ for x in range(1):
     avg_inter_frame_interval = 10000 # in ms
     exp_num = 1 # defines certain radio settings (set to >0 for distacne based spreading factor assignment)
     simulation_time = 1008000 # in ms
-    relays = 8 # number # of relay nodes
+    relays = 1 # number # of relay nodes
     redunancy = 0 #ignore th150is parameter
     sf_sensors = 10 # spreading factor for the sensor frames (if exp_naum = 0)
     sf_relays = 8 # spreading factor for the relay frames
@@ -25,7 +25,7 @@ for x in range(1):
     transmit_power_dBm = 14 # transmit power in dBm
     path_loss_exponent = 2 # determines signal attenuation as it travels from sender to receiver ##gamma
     weak_interference = 1 # set to 1 if a weak frame can cause sync. failure for a strong frame
-    relay_radius = 150  # radius of the circle over which the relays are randomly distributed
+    relay_radius = 25  # radius of the circle over which the relays are randomly distributed
     relay_reception_time = 1000 # in ms
     relay_transmission_time = 1000 # in ms
     relay_sleep_time = 5000 # in ms
