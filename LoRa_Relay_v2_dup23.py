@@ -629,7 +629,7 @@ for simulation_number in range(10):
         t_s = int(sys.argv[25]) # Relay sleep time (ms)
         relayCircle = int(sys.argv[26])
         gpsFlag = int(sys.argv[27])
-        alpha = float(sys.argv[27])
+        alpha = float(sys.argv[28])
 
     else:
         print(len(sys.argv))

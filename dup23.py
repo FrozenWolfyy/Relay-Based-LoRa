@@ -44,5 +44,5 @@ for x in range(1,39):
                         str(relays), str(redunancy), str(sf_sensors), str(sf_relays), str(naka_m), str(tx_type), str(num_gw),\
                         str(circ_rad), str(n0_dist), str(n0_payload), str(min_payload), str(max_payload), str(coding_rate),\
                         str(bandwidth), str(transmit_power_dBm), str(path_loss_exponent), str(weak_interference), str(relay_radius),\
-                        str(relay_reception_time), str(relay_transmission_time), str(relay_sleep_time),str(relay_circle),str(gpsFlag)];
+                        str(relay_reception_time), str(relay_transmission_time), str(relay_sleep_time),str(relay_circle),str(gpsFlag),str(alpha)];
             exec(open(r'LoRa_Relay_v2_dup23.py').read());
