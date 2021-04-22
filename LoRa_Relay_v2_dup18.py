@@ -467,7 +467,7 @@ for simulation_number in range(10):
                         # print(node.packet[rcvr_id].pl)
                         # print(airtime(bs[rcvr_id].sf,node.packet[rcvr_id].cr,node.packet[rcvr_id].pl,node.packet[rcvr_id].bw))
                         # print(pow(2, bs[rcvr_id].sf))
-                        powerConsumed+=(airtime(bs[rcvr_id].sf,node.packet[rcvr_id].cr,node.packet[rcvr_id].pl,node.packet[rcvr_id].bw))
+                        # powerConsumed+=(airtime(bs[rcvr_id].sf,node.packet[rcvr_id].cr,node.packet[rcvr_id].pl,node.packet[rcvr_id].bw))
 
 
 
@@ -567,6 +567,9 @@ for simulation_number in range(10):
 
                 # after a successful recetption, store the relay's payload to the gateway
                 if (tx_success):
+                    global powerConsumed
+                    if relay_payload_bytes!=0:
+                        powerConsumed+=airtime(bs[bs_id].sf,1,relay_payload_bytes,125)
                     idx_list = []
                     for j in range(0, len(relay_buffer_seqnum[bs_id])):
                         idx_list.append(0)
@@ -874,12 +877,12 @@ print(totsoftots,powerConsumed/10)
 # n0_dist_text.write('\n')
 # n0_dist_text.close()
 
-power_consumed=open("powerConsumedRelayDistanceLessSimsWithoutGPSWithoutRelayCircleDup18.txt","a")
+power_consumed=open("powerConsumedRelayDistanceLessSimsWithoutGPSWithoutRelayCircleCorrectedDup18.txt","a")
 power_consumed.write(str(powerConsumed/10))
 power_consumed.write(',')
 power_consumed.close()
 
-fdrConsumed=open("fdrRateRelayDistanceLessSimsWithoutGPSWithoutRelayCircleDup18.txt","a")
+fdrConsumed=open("fdrRateRelayDistanceLessSimsWithoutGPSWithoutRelayCircleCorrectedDup18.txt","a")
 fdrConsumed.write(str(totsoftots))
 fdrConsumed.write(',')
 fdrConsumed.close()
