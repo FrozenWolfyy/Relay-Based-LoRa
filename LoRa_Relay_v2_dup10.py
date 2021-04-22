@@ -467,7 +467,7 @@ for simulation_number in range(1):
                         # print(node.packet[rcvr_id].pl)
                         # print(airtime(bs[rcvr_id].sf,node.packet[rcvr_id].cr,node.packet[rcvr_id].pl,node.packet[rcvr_id].bw))
                         # print(pow(2, bs[rcvr_id].sf))
-                        powerConsumed+=(airtime(bs[rcvr_id].sf,node.packet[rcvr_id].cr,node.packet[rcvr_id].pl,node.packet[rcvr_id].bw))
+                        # powerConsumed+=(airtime(bs[rcvr_id].sf,node.packet[rcvr_id].cr,node.packet[rcvr_id].pl,node.packet[rcvr_id].bw))
 
 
 
@@ -673,8 +673,10 @@ for simulation_number in range(1):
 
     ##when our current airtime is greater than the
     relay_payload_bytes = 1;
+    a
     while airtime(relay_sf, 1, relay_payload_bytes, 125) < t_t :
         relay_payload_bytes = relay_payload_bytes + 1
+        powerConsumed+=airtime(relay_sf,1,relay_payload_bytes,125)
 
     if airtime(relay_sf, 1, relay_payload_bytes, 125) > t_t :
         relay_payload_bytes = relay_payload_bytes - 1
