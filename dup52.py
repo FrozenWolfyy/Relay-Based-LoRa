@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 
-for x in range(1):
+for x in range(20):
 # specify simulation parameters
-    num_nodes_range = [100] # number of nodes in the network
+    num_nodes_range = [200 + 10*x] # number of nodes in the network
     avg_inter_frame_interval = 10000 # in ms
     exp_num = 1 # defines certain radio settings (set to >0 for distacne based spreading factor assignment)
     simulation_time = 1008000 # in ms
@@ -31,7 +31,7 @@ for x in range(1):
     relay_sleep_time = 5000 # in ms
     relay_circle=1
     gpsFlag=1
-    alpha = 1
+    alpha = 0.0001
     basedOnRelayCircle = 0
 
     # perform multiple simulation runs for the parameters specified above
@@ -41,9 +41,9 @@ for x in range(1):
         for weak_interference in range(0,1,1):
             # for i in range(simulation_runs):
             import sys;
-            sys.argv=[r'LoRa_Relay_v2_dup50.py', str(num_nodes),str(avg_inter_frame_interval),str(exp_num),str(simulation_time),\
+            sys.argv=[r'LoRa_Relay_v2_dup52.py', str(num_nodes),str(avg_inter_frame_interval),str(exp_num),str(simulation_time),\
                         str(relays), str(redunancy), str(sf_sensors), str(sf_relays), str(naka_m), str(tx_type), str(num_gw),\
                         str(circ_rad), str(n0_dist), str(n0_payload), str(min_payload), str(max_payload), str(coding_rate),\
                         str(bandwidth), str(transmit_power_dBm), str(path_loss_exponent), str(weak_interference), str(relay_radius),\
                         str(relay_reception_time), str(relay_transmission_time), str(relay_sleep_time),str(relay_circle),str(gpsFlag),str(alpha),str(basedOnRelayCircle)];
-            exec(open(r'LoRa_Relay_v2_dup50.py').read());
+            exec(open(r'LoRa_Relay_v2_dup52.py').read());
