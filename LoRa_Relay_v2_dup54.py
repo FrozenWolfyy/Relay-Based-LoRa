@@ -19,7 +19,7 @@ relayCircleGlobs = 0
 
 
 
-for simulation_number in range(1):
+for simulation_number in range(10):
     # turn on/off graphics
     graphics = 0
 
@@ -555,7 +555,6 @@ for simulation_number in range(1):
 
             # transmit the buffered contents to gateway-0 (bs_id = 0)
             if (len(relay_buffer_seqnum[bs_id]) > 0):
-
                 # print(relay_payload_bytes)
                 # print(relay_payload_bytes)
                 # print(bs_id,sum(payloadarray[bs_id]))
@@ -836,8 +835,8 @@ for simulation_number in range(1):
 
     # tot_fdr_rate+=rx_rate_0_relay
 # plt.show()
-totsoftots*=100
-print(totsoftots,powerConsumed)
+totsoftots*=10
+print(totsoftots,powerConsumed/10)
 
     # for i in range(nrNodes):
     #     total_sent = 0
@@ -905,12 +904,12 @@ print(totsoftots,powerConsumed)
 # n0_dist_text.write('\n')
 # n0_dist_text.close()
 
-# power_consumed=open("powerConsumedAlphat_t1000Dup49.txt","a")
-# power_consumed.write(str(powerConsumed/10))
-# power_consumed.write(',')
-# power_consumed.close()
-#
-# fdrConsumed=open("fdrRateAlphat_t1000Dup49.txt","a")
-# fdrConsumed.write(str(totsoftots))
-# fdrConsumed.write(',')
-# fdrConsumed.close()
+power_consumed=open("powerConsumed0Nto400Ntt1000msalpha00625Dup54.txt","a")
+power_consumed.write(str(powerConsumed/10))
+power_consumed.write(',')
+power_consumed.close()
+
+fdrConsumed=open("fdrRate0Nto400Ntt1000msalpha00625Dup54.txt","a")
+fdrConsumed.write(str(totsoftots))
+fdrConsumed.write(',')
+fdrConsumed.close()
