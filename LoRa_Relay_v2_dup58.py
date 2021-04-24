@@ -909,7 +909,7 @@ power_consumed.write(str(powerConsumed/10))
 power_consumed.write(',')
 power_consumed.close()
 
-fdrConsumed=open("fdrRateAlphaVsNumberofNodesCircRadius150Dup58.xt","a")
+fdrConsumed=open("fdrRateAlphaVsNumberofNodesCircRadius150Dup58.txt","a")
 fdrConsumed.write(str(totsoftots))
 fdrConsumed.write(',')
 fdrConsumed.close()
