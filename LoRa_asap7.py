@@ -837,20 +837,20 @@ for simulation_number in range(10):
     # tot_fdr_rate+=rx_rate_0_relay
     # plt.show()
 
-    power_consumed=open("powerConsumedasap4.txt","a")
+    power_consumed=open("powerConsumedasap7.txt","a")
     power_consumed.write(str(circle_radius))
     power_consumed.write(',')
     power_consumed.write(str(powerConsumed))
     power_consumed.write('\n')
     power_consumed.close()
 
-    fdrConsumed=open("fdrRateasap4.txt","a")
+    fdrConsumed=open("fdrRateasap7.txt","a")
     fdrConsumed.write(str(circle_radius))
     fdrConsumed.write(',')
     fdrConsumed.write(str( (fdr/nrNodes)*100) )
     fdrConsumed.write('\n')
     fdrConsumed.close()
-    
+
     fdr = 0
     # for i in range(nrNodes):
     #     total_sent = 0

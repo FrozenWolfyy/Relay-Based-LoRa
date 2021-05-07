@@ -25,7 +25,7 @@ for x in range(99):
     transmit_power_dBm = 14 # transmit power in dBm
     path_loss_exponent = 2 # determines signal attenuation as it travels from sender to receiver ##gamma
     weak_interference = 1 # set to 1 if a weak frame can cause sync. failure for a strong frame
-    relay_radius =  int(circ_rad/2)  # radius of the circle over which the relays are randomly distributed
+    relay_radius =  int(circ_rad/4)  # radius of the circle over which the relays are randomly distributed
     relay_reception_time = 1000 # in ms
     relay_transmission_time = 1000 # in ms
     relay_sleep_time = 5000 # in ms
@@ -41,9 +41,9 @@ for x in range(99):
         for weak_interference in range(0,1,1):
             # for i in range(simulation_runs):
             import sys;
-            sys.argv=[r'LoRa_asap4.py', str(num_nodes),str(avg_inter_frame_interval),str(exp_num),str(simulation_time),\
+            sys.argv=[r'LoRa_asap6.py', str(num_nodes),str(avg_inter_frame_interval),str(exp_num),str(simulation_time),\
                         str(relays), str(redunancy), str(sf_sensors), str(sf_relays), str(naka_m), str(tx_type), str(num_gw),\
                         str(circ_rad), str(n0_dist), str(n0_payload), str(min_payload), str(max_payload), str(coding_rate),\
                         str(bandwidth), str(transmit_power_dBm), str(path_loss_exponent), str(weak_interference), str(relay_radius),\
                         str(relay_reception_time), str(relay_transmission_time), str(relay_sleep_time),str(relay_circle),str(gpsFlag),str(alpha),str(basedOnRelayCircle)];
-            exec(open(r'LoRa_asap4.py').read());
+            exec(open(r'LoRa_asap6.py').read());
