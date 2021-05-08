@@ -8,14 +8,14 @@ for x in range(1):
     avg_inter_frame_interval = 10000 # in ms
     exp_num = 1 # defines certain radio settings (set to >0 for distacne based spreading factor assignment)
     simulation_time = 1008000 # in ms
-    relays = 8 # number # of relay nodes
+    relays = 12 # number # of relay nodes
     redunancy = 0 #ignore th150is parameter
     sf_sensors = 10 # spreading factor for the sensor frames (if exp_naum = 0)
     sf_relays = 8 # spreading factor for the relay frames
     naka_m = 1 # the nakagami m parameter (related to fading)
     tx_type = 1 # 1 : exponentially distributed packet intervals; 2 : periodic transmissions
     num_gw = 1 # number of gateways
-    circ_rad = 500 # radius of the circle over which the ndoes are randomly distributed (gateway-0 is at the center)
+    circ_rad = 300 # radius of the circle over which the ndoes are randomly distributed (gateway-0 is at the center)
     n0_dist = 80 # distance between node-0 and gateway-0
     n0_payload = 1 # payload size (in bytess) for node-0's frames
     min_payload = 1 # minimium possible payload size (in bytes) for other node's frames
@@ -25,14 +25,14 @@ for x in range(1):
     transmit_power_dBm = 14 # transmit power in dBm
     path_loss_exponent = 2 # determines signal attenuation as it travels from sender to receiver ##gamma
     weak_interference = 1 # set to 1 if a weak frame can cause sync. failure for a strong frame
-    relay_radius = 75  # radius of the circle over which the relays are randomly distributed
+    relay_radius = 150  # radius of the circle over which the relays are randomly distributed
     relay_reception_time = 1000 # in ms
     relay_transmission_time = 1000 # in ms
     relay_sleep_time = 5000 # in ms
     relay_circle=1
     gpsFlag=1
     alpha = 1
-    basedOnRelayCircle = 1
+    basedOnRelayCircle = 0
 
     # perform multiple simulation runs for the parameters specified above
     # each simulation run employs a random realization of the sensor placement

@@ -822,7 +822,7 @@ for simulation_number in range(10):
     # print(sensorPowerConsumed)
     totsoftots+=((fdr/nrNodes))
     fdr=0
-    #
+
     # if simulation_number == 0:
     #     if gpsFlag == 1:
     #         print("GPS is on")
