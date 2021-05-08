@@ -836,7 +836,7 @@ for simulation_number in range(10):
 
     # tot_fdr_rate+=rx_rate_0_relay
     # plt.show()
-
+    print(fdr/nrNodes)
     power_consumed=open("powerConsumedasap9.txt","a")
     power_consumed.write(str(nrNodes))
     power_consumed.write(',')
