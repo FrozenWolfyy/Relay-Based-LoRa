@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-for x in range(177,250):
+for x in range(209,250):
 # specify simulation parameters
     num_nodes_range = [x] # number of nodes in the network
     avg_inter_frame_interval = 10000 # in ms
