@@ -34,6 +34,7 @@ for x in range(209,250):
     alpha = 1
     basedOnRelayCircle = 0
 
+
     # perform multiple simulation runs for the parameters specified above
     # each simulation run employs a random realization of the sensor placement
 

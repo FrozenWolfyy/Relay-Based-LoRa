@@ -20,7 +20,6 @@ relayCircleGlobs = 0
 
 
 for simulation_number in range(10):
-    powerConsumed = 0
     # turn on/off graphics
     graphics = 0
 
@@ -630,18 +629,18 @@ for simulation_number in range(10):
 
     # get arguments
     if len(sys.argv) == 30:
-        nrNodes = random.randint(1,250)  # No. of sensors in the network
+        nrNodes = int(sys.argv[1])  # No. of sensors in the network
         avgSendTime = int(sys.argv[2]) # Mean of the time interval between two consecutive packets from a sensor
         experiment = int(sys.argv[3]) # Defines certain radio settings
         simtime = int(sys.argv[4]) # No. of milliseconds of network operation to be simulated
-        numRelays = random.randint(0,15) # Number of relays
+        numRelays = int(sys.argv[5]) # Number of relays
         redundant_readings = int(sys.argv[6]) # Let redundant_readings = r. Then frame i contains the sensor readings i, i-1, ..., i-r. (See EW and Globecom papers)
         sensor_sf = int(sys.argv[7]) # Spreading factor used by the sensors for experiment = 0 (distance-based assignment is used if experiment > 0)
         relay_sf = int(sys.argv[8]) # Spreading factor used by the relays
         nakagami_m = float(sys.argv[9]) # Nakagami m parameter to model the fading on the links (If 0, then no fading; otherwise, use a value of 0.5 or greater)
         transmission_type = int(sys.argv[10]) # 1 = exponentially distributed packet interval; 2 = periodic transmissions
         numGateways = int(sys.argv[11]) # Number of gateways
-        circle_radius = random.randint(20,300) # Radius of the circular region in meters
+        circle_radius = int(sys.argv[12]) # Radius of the circular region in meters
         node0_dist = int(sys.argv[13]) # Distance between the gateway and the desired sender
         node0_payload_bytes = int(sys.argv[14]) # Payload bytes in a frame from the desired sender
         min_payload_bytes = int(sys.argv[15]) # Minimum possible payload bytes from an arbitray sender
@@ -651,7 +650,7 @@ for simulation_number in range(10):
         Ptx = int(sys.argv[19]) # power of the transmitted signal in dBm
         gamma = int(sys.argv[20]) # Path loss exponent
         weak_interference = int(sys.argv[21]) # Set to 1 if a weak intefering frame can cause frame loss
-        relay_radius = random.randint(10,circle_radius+circle_radius*0.1) # The relays are randomly distributed over a circle
+        relay_radius = int(sys.argv[22]) # The relays are randomly distributed over a circle
         t_r = int(sys.argv[23]) # Relay reception time (ms)
         t_t = int(sys.argv[24]) # Relay transmission time (ms)
         t_s = int(sys.argv[25]) # Relay sleep time (ms)
@@ -777,15 +776,15 @@ for simulation_number in range(10):
         env.process(transmit(env,node))
 
     # store nodes and basestation locations
-    # with open('nodes.txt', 'w') as nfile:
-    #     for node in nodes:
-    #         nfile.write('{x} {y} {id}\n'.format(**vars(node)))
-    #         sf_usage[node.sf - 7] = sf_usage[node.sf - 7] + 1
-    #         #print("dist: ", node.dist, " sf: ", node.sf)
-    #
-    # with open('basestation.txt', 'w') as bfile:
-    #     for basestation in bs:
-    #         bfile.write('{x} {y} {id}\n'.format(**vars(basestation)))
+    with open('nodes.txt', 'w') as nfile:
+        for node in nodes:
+            nfile.write('{x} {y} {id}\n'.format(**vars(node)))
+            sf_usage[node.sf - 7] = sf_usage[node.sf - 7] + 1
+            #print("dist: ", node.dist, " sf: ", node.sf)
+
+    with open('basestation.txt', 'w') as bfile:
+        for basestation in bs:
+            bfile.write('{x} {y} {id}\n'.format(**vars(basestation)))
 
     # start simulation
     env.run(until=simtime)
@@ -820,9 +819,9 @@ for simulation_number in range(10):
     #print("Distance: ", nodes[1].dist, "SF: ", nodes[1].sf, "Nodes: ", nrNodes, "FDR (node 0): ", rx_rate_1_relay)
 
     # print(fdr/nrNodes)
-
     # print(sensorPowerConsumed)
-    # totsoftots+=((fdr/nrNodes))
+    totsoftots+=((fdr/nrNodes))
+    fdr=0
     #
     # if simulation_number == 0:
     #     if gpsFlag == 1:
@@ -835,36 +834,10 @@ for simulation_number in range(10):
     #         print("relayCircle is off")
 
     # tot_fdr_rate+=rx_rate_0_relay
-    # plt.show()
+# plt.show()
+totsoftots*=10
+print(totsoftots,powerConsumed/10)
 
-    power_consumed=open("CompleteSetRandomGenerator.txt","a")
-    power_consumed.write(str(nrNodes))
-    power_consumed.write(',')
-    power_consumed.write(str(relay_radius))
-    power_consumed.write(',')
-    power_consumed.write(str(circle_radius))
-    power_consumed.write(',')
-    power_consumed.write(str(numRelays))
-    power_consumed.write(',')
-    power_consumed.write(str( (fdr/nrNodes)*100) )
-    power_consumed.write(',')
-    power_consumed.write(str(powerConsumed))
-    power_consumed.write('\n')
-    power_consumed.close()
-
-    # fdrConsumed=open("fdrRateFromRandomGenerator.txt","a")
-    # fdrConsumed.write(str(nrNodes))
-    # fdrConsumed.write(',')
-    # fdrConsumed.write(str(numRelays))
-    # fdrConsumed.write(',')
-    # fdrConsumed.write(str(circle_radius))
-    # fdrConsumed.write(',')
-    # fdrConsumed.write(str(relay_radius))
-    # fdrConsumed.write(',')
-    # fdrConsumed.write('\n')
-    # fdrConsumed.close()
-
-    fdr = 0
     # for i in range(nrNodes):
     #     total_sent = 0
     #     total_rcvd = 0
@@ -930,3 +903,10 @@ for simulation_number in range(10):
 # n0_dist_text.write(str(avg_fdr_rate))
 # n0_dist_text.write('\n')
 # n0_dist_text.close()
+
+power_consumed=open("singlenodesim.txt","a")
+power_consumed.write(str(powerConsumed/10))
+power_consumed.write(',')
+power_consumed.write(str(totsoftots))
+power_consumed.write('\n')
+power_consumed.close()
